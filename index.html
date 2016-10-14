@@ -1,0 +1,43 @@
+<!--
+
+
+Stuff for HTML Service
+
+
+
+-->
+
+
+
+<!-- Nice message warning IE9 users to use Chrome for Google stuff because Google has already dropped support for IE9. -->
+<? if(isIE9) { ?>
+<div class="errorRow" style="width:100%;text-align:center;padding:5px 0;margin:5px 0;border:1px solid #900">
+Unfortunately, Google no longer supports IE8 or IE9. The dashboard is only fully functional in modern browsers (e.g. Chrome, IE10, etc...).
+</div>
+<? } ?>
+
+<script>
+//Creates an item, adds classes and sets inner content;
+function createItem(tag, classes, content){
+  var item = document.createElement(tag);
+  item.className = classes;
+  item.innerHTML = content;
+  return item;
+}
+
+//Fixed header when scrolling. Don't ask me why the event is on document and uses window's scrollTop. It works, that's all I know.
+$(document).on("scroll",function(e){ $fixedItem.style.top = $(window).scrollTop()+"px"; });
+
+//console.log throws an error in IE if the developer tools are not open. This adds noop function to suppress errors.
+(function (global) {
+	'use strict';
+	global.console = global.console || {};
+	var con = global.console;
+	var prop, method;
+	var empty = {};
+	var dummy = function () { };
+	var properties = 'memory'.split(',');
+	var methods = ('assert,clear,count,debug,dir,dirxml,error,exception,group,groupCollapsed,groupEnd,info,log,markTimeline,profile,profiles,profileEnd,show,table,time,timeEnd,timeline,timelineEnd,timeStamp,trace,warn').split(',');
+	while(prop = properties.pop()) con[prop] = con[prop] || empty;
+	while(method = methods.pop()) con[method] = con[method] || dummy;
+})(window);
